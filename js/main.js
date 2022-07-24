@@ -1,1 +1,2 @@
-import {newPosts} from './data.js';
+import {createNewPosts} from './data.js';
+import './thumbnails.js';
