@@ -59,7 +59,7 @@ const createPost = () => {
   };
 };
 
-const newPosts = () => Array.from({length: POST_NUMBERS}, createPost);
+const createNewPosts = () => Array.from({length: POST_NUMBERS}, createPost);
 
-export {newPosts};
+export {createNewPosts};
 
