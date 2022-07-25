@@ -11,4 +11,6 @@ const checkCommentLength = (comment, maxLength) => comment.length <= maxLength;
 
 const getRandomArrayElement = (elements) => elements[getRandom(0, elements.length - 1)];
 
-export {getRandom, getRandomArrayElement,checkCommentLength};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getRandom, getRandomArrayElement,checkCommentLength, isEscapeKey};
