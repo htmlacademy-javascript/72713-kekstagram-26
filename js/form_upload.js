@@ -1,4 +1,6 @@
 import {isEscapeKey, checkCommentLength} from './util.js';
+import {scaleEditing} from './scale.js';
+import {resetEffects} from './slider.js';
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadFile = document.querySelector('#upload-file');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -27,11 +29,13 @@ function closeUploadForm () {
   uploadOverlay.classList.add('hidden');
   bodyElement.classList.remove('.modal-open');
   uploadForm.reset();
+  resetEffects ();
   document.removeEventListener('keydown', onFormEscKeydown);
 }
 
 uploadFile.addEventListener('change', ()=>{
   openUploadForm();
+  scaleEditing();
 });
 
 uploadCansel.addEventListener('click', ()=>{
