@@ -1,18 +1,18 @@
-import {isEscKey} from './util.js';
+import {isEscapeKey} from './util.js';
 const successMessage = document.querySelector('#success').content.querySelector('.success');
 const successCloseButton = successMessage.querySelector('.success__button');
 const errMessage = document.querySelector('#error').content.querySelector('.error');
 const errCloseButton = errMessage.querySelector('.error__button');
 
 const onSuccessMessageEscKeydown = (evt) => {
-  if (isEscKey(evt)) {
+  if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeSuccessMessage();
   }
 };
 
 const onErrMessageEscKeydown = (evt) => {
-  if (isEscKey(evt)) {
+  if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeErrMessage();
   }
