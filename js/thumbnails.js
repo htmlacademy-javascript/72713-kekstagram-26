@@ -1,11 +1,7 @@
-import {createNewPosts} from './data.js';
-
 const picturesContainer = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const newPictures = createNewPosts(25);
-
-const renderNewPictures = () => {
+const renderNewPictures = (newPictures) => {
   const newPicturesFragment = document.createDocumentFragment();
 
   newPictures.forEach(({url, likes, comments}) => {

@@ -29,8 +29,10 @@ const doBigger = () => {
   changeScale();
 };
 
-scaleSmaller.addEventListener('click', doSmaller);
-scaleBigger.addEventListener('click', doBigger);
+const resetScale = () => {
+  currentValue = MAX_VALUE_SCALE;
+  changeScale ();
+};
 
 const scaleEditing = () => {
   currentValue = MAX_VALUE_SCALE;
@@ -39,5 +41,5 @@ const scaleEditing = () => {
   scaleBigger.addEventListener('click', doBigger);
 };
 
-export {scaleEditing};
+export {resetScale, scaleEditing};
 
