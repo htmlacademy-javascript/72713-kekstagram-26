@@ -1,7 +1,14 @@
-import {createNewPosts} from './data.js';
+import './filtr.js';
+import {setPhotoformSubmit, closeUploadForm} from '.form_upload.js';
 import {renderNewPictures} from './thumbnails.js';
-import {scaleEditing} from './scale.js';
-import './slider.js';
+import {getData} from './api.js';
+import {showAlert} from './util.js';
 
+getData((newPictures) => {
+  renderNewPictures(newPictures);
+},
+() => {
+  showAlert('Ошибка. Обновите страницу');
+});
 
-renderNewPictures(createNewPosts(25));
+setPhotoformSubmit (closeUploadForm);

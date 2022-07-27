@@ -102,18 +102,19 @@ sliderElement.noUiSlider.on ('update', () => {
   effectValue.value = sliderElement.noUiSlider.get ();
 });
 
-effectList.addEventListener('change', (evt) => {
-  if (evt.target.value==='none') {
-    resetEffects ();
-  } else {
-    sliderElement.parentElement.classList.remove('hidden');
-    removeEffectsClass ();
-    currentEffect = evt.target.value;
-    imgPreview.classList.add(`effects__preview--${currentEffect}`);
-    sliderElement.noUiSlider.updateOptions(EFFECTS[currentEffect].options);
-    imgPreview.style.filter = `${EFFECTS[currentEffect].filter}(${effectValue.value}${EFFECTS[currentEffect].units})`;
-  }
-});
-
-export {resetEffects};
+const renderEffect = () => {
+  effectList.addEventListener('change', (evt) => {
+    if (evt.target.value==='none') {
+      resetEffects ();
+    } else {
+      sliderElement.parentElement.classList.remove('hidden');
+      removeEffectsClass ();
+      currentEffect = evt.target.value;
+      imgPreview.classList.add(`effects__preview--${currentEffect}`);
+      sliderElement.noUiSlider.updateOptions(EFFECTS[currentEffect].options);
+      imgPreview.style.filter = `${EFFECTS[currentEffect].filter}(${effectValue.value}${EFFECTS[currentEffect].units})`;
+    }
+  });
+};
+export {resetEffects, renderEffect};
 
