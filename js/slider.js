@@ -98,11 +98,8 @@ const resetEffects = () => {
   imgPreview.style.filter = '';
 };
 
-sliderElement.noUiSlider.on ('update', () => {
-  effectValue.value = sliderElement.noUiSlider.get ();
-});
-
 const renderEffect = () => {
+  sliderElement.parentElement.classList.add('hidden');
   effectList.addEventListener('change', (evt) => {
     if (evt.target.value==='none') {
       resetEffects ();
@@ -112,7 +109,10 @@ const renderEffect = () => {
       currentEffect = evt.target.value;
       imgPreview.classList.add(`effects__preview--${currentEffect}`);
       sliderElement.noUiSlider.updateOptions(EFFECTS[currentEffect].options);
-      imgPreview.style.filter = `${EFFECTS[currentEffect].filter}(${effectValue.value}${EFFECTS[currentEffect].units})`;
+      sliderElement.noUiSlider.on ('update', () => {
+        effectValue.value = sliderElement.noUiSlider.get ();
+        imgPreview.style.filter = `${EFFECTS[currentEffect].filter}(${effectValue.value}${EFFECTS[currentEffect].units})`;
+      });
     }
   });
 };
