@@ -28,20 +28,6 @@ const onWindowErrMessageClose = (evt) => {
     closeErrMessage();}
 };
 
-function closeSuccessMessage () {
-  document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onSuccessMessageEscKeydown);
-  successMessage.removeEventListener('click', onWindowSuccessMessageClose);
-  successMessage.remove();
-}
-
-function closeErrMessage () {
-  document.body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onErrMessageEscKeydown);
-  successMessage.removeEventListener('click', onWindowErrMessageClose);
-  errMessage.remove();
-}
-
 const showSuccessMessage = () => {
   document.body.appendChild(successMessage);
   successCloseButton.addEventListener('click', () => {
@@ -59,5 +45,19 @@ const showErrMessage = () => {
   document.addEventListener('keydown', onErrMessageEscKeydown);
   successMessage.addEventListener('click', onWindowErrMessageClose);
 };
+
+function closeSuccessMessage () {
+  document.body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onSuccessMessageEscKeydown);
+  successMessage.removeEventListener('click', onWindowSuccessMessageClose);
+  successMessage.remove();
+}
+
+function closeErrMessage () {
+  document.body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onErrMessageEscKeydown);
+  successMessage.removeEventListener('click', onWindowErrMessageClose);
+  errMessage.remove();
+}
 
 export {showSuccessMessage, showErrMessage, closeSuccessMessage, closeErrMessage};

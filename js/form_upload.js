@@ -16,6 +16,13 @@ const submitButton = uploadForm.querySelector('.img-upload__submit');
 const COMMENT_MAX_LENGTH = 140;
 const MAX_HASHTAG_QUANTITY = 5;
 
+const endRegExp = /[^-_=+;:,.]$/m;
+const RegExp = /^#[A-Za-zА-Яа-яЁё0-9]{0,}$/;
+const HashtagLength = {
+  MIN: 2,
+  MAX: 20
+};
+
 const onFormEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
@@ -55,19 +62,11 @@ uploadCansel.addEventListener('click', ()=>{
 
 const pristine = new Pristine (uploadForm, {
   classTo:'img-upload__field-wrapper',
-  errorTextParrent: 'img-upload__field-wrapper',
+  errorTextParent: 'img-upload__field-wrapper',
 });
 
 pristine.addValidator(commentInput, (value) => checkCommentLength(value, COMMENT_MAX_LENGTH),
   `Комментарий не более ${COMMENT_MAX_LENGTH} символов`);
-
-
-const endRegExp = /[^-_=+;:,.]$/m;
-const RegExp = /^#[A-Za-zА-Яа-яЁё0-9]{0,}$/;
-const HashtagLength = {
-  MIN: 2,
-  MAX: 20
-};
 
 const parseHashtagInput = (value) => value !== '' ? value.trim().toLowerCase().split(' ') : [];
 
